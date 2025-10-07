@@ -1,8 +1,26 @@
 <h1>Welcome to {{ hotelName }}</h1>
 
-<div [hidden]="hideRooms">
+<div *ngIf="hideRooms">
   Number of Rooms:
   <div [innerText]="numberOfRooms"></div>
+</div>
+
+{{ rooms.availableRooms }}
+
+<div *ngIf="rooms.availableRooms > 0">
+  Rooms List:
+  {{ roomsList }}
+  <table>
+    <tr>
+      <th>Room Number</th>
+      <th>Room Type</th>
+      <th>Room Amenities</th>
+      <th>Room Price</th>
+      <th>Check-in Time</th>
+      <th>Check-out Time</th>
+    </tr>
+    <tr *ngFor="let room of roomsList"></tr>
+  </table>
 </div>
 
 <button (click)="toggle()">Toggle</button>
