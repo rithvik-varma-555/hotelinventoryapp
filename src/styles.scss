@@ -2,3 +2,13 @@
 
 /* Importing Bootstrap SCSS file (modern way) */
 @use "bootstrap" as *;
+
+.even {
+    background-color: steelblue ;
+    color: white ; 
+} 
+
+.odd { 
+    background-color: tomato ; 
+    color: white ; 
+}
