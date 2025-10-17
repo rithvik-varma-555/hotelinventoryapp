@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoomList } from '../rooms.interface';
 
@@ -12,8 +12,12 @@ import { RoomList } from '../rooms.interface';
 export class RoomsList implements OnInit {
   @Input() rooms: RoomList[] = [];
 
+  @Output() selectedRoom = new EventEmitter<RoomList>();
+
   constructor() {}
-  ngOnInit(): void {
-    // Initialization logic here
+  ngOnInit(): void {}
+
+  selectRoom(room: RoomList) {
+    this.selectedRoom.emit(room);
   }
 }

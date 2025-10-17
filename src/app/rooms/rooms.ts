@@ -14,6 +14,9 @@ export class Rooms implements OnInit {
   hotelName = 'Hilton Hotel';
   numberOfRooms = 10;
   hideRooms = false;
+
+  selectedRoom!: RoomList;
+
   rooms: Room = {
     totalRooms: 20,
     availableRooms: 10,
@@ -63,5 +66,9 @@ export class Rooms implements OnInit {
 
   toggle() {
     this.hideRooms = !this.hideRooms;
+  }
+
+  selectRoom(room: RoomList) {
+    this.selectedRoom = room;
   }
 }

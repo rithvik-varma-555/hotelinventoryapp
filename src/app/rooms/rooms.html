@@ -10,11 +10,16 @@
 
 {{ rooms.availableRooms }}
 
+<div *ngIf="selectedRoom">
+  {{ selectedRoom | json }}
+</div>
+
 <!-- {{ roomsList | json }} -->
 <!-- new branch created -->
-
-<div *ngIf="rooms.availableRooms > 0">
-  <hinv-rooms-list [rooms]="roomsList"></hinv-rooms-list>
+<div>
+  <div *ngIf="rooms.availableRooms > 0">
+    <hinv-rooms-list [rooms]="roomsList" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
+  </div>
 </div>
 
 <button (click)="toggle()">Toggle</button>
