@@ -3,12 +3,13 @@
 /* Importing Bootstrap SCSS file (modern way) */
 @use "bootstrap" as *;
 
-.even {
-    background-color: steelblue ;
-    color: white ; 
-} 
-
-.odd { 
-    background-color: tomato ; 
-    color: white ; 
+.table tr.even > td {
+  background-color: steelblue !important;
+  color: white !important;
 }
+
+.table tr.odd > td {
+  background-color: tomato !important;
+  color: white !important;
+}
+
