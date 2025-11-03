@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { Room, RoomList } from './rooms.interface';
 import { CommonModule } from '@angular/common';
 import { RoomsList } from './rooms-list/rooms-list';
+import { Header } from '../header/header';
 
 @Component({
   selector: 'hinv-rooms',
   standalone: true,
-  imports: [CommonModule, RoomsList],
+  imports: [CommonModule, RoomsList, Header],
   templateUrl: './rooms.html',
   styleUrls: ['./rooms.scss'],
 })
-export class Rooms implements OnInit {
+export class Rooms implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
   hotelName = 'Hilton Hotel';
   numberOfRooms = 10;
-  hideRooms = false;
+  hideRooms = true;
 
   selectedRoom!: RoomList;
 
@@ -27,8 +37,14 @@ export class Rooms implements OnInit {
 
   roomsList: RoomList[] = [];
 
+  @ViewChild(Header) headerComponent!: Header;
+
+  @ViewChildren(Header) headerChildrenComponent!: QueryList<Header>;
+
   constructor() {}
+
   ngOnInit(): void {
+    // console.log(this.headerComponent);
     this.roomsList = [
       {
         roomNumber: 1,
@@ -66,6 +82,17 @@ export class Rooms implements OnInit {
     ];
   }
 
+  ngDoCheck(): void {
+    console.log('onChanges called');
+  }
+
+  ngAfterViewInit(): void {
+    this.headerComponent.title = 'Rooms view';
+    console.log(this.headerChildrenComponent.last.title = 'Last Title');
+  }
+
+  ngAfterViewChecked(): void {}
+
   toggle() {
     this.hideRooms = !this.hideRooms;
     this.title = 'Rooms List';
@@ -88,7 +115,7 @@ export class Rooms implements OnInit {
       rating: 4.5,
     };
 
-    // this.roomsList.push(room);
+    // this.roomsList.push(room);s
     this.roomsList = [...this.roomsList, room];
   }
 }
