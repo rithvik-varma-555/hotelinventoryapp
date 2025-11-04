@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   SimpleChanges,
@@ -19,7 +20,7 @@ import { RoomList } from '../rooms.interface';
   styleUrls: ['./rooms-list.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomsList implements OnInit, OnChanges {
+export class RoomsList implements OnInit, OnChanges, OnDestroy {
   @Input() rooms: RoomList[] = [];
   @Input() title: string = '';
 
@@ -37,5 +38,9 @@ export class RoomsList implements OnInit, OnChanges {
 
   selectRoom(room: RoomList) {
     this.selectedRoom.emit(room);
+  }
+
+  ngOnDestroy(): void {
+    console.log('onDestroy called');
   }
 }

@@ -2,10 +2,12 @@ import { AfterViewInit, Component, ElementRef, signal, ViewChild, ViewContainerR
 import { RouterOutlet } from '@angular/router';
 import { Rooms } from './rooms/rooms';
 import { CommonModule } from '@angular/common';
+import { Container } from "./container/container";
+import { Employee } from "./employee/employee";
 
 @Component({
   selector: 'hinv-root',
-  imports: [RouterOutlet, CommonModule, Rooms],
+  imports: [RouterOutlet, CommonModule, Rooms, Container, Employee],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

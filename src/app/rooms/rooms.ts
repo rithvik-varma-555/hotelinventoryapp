@@ -88,7 +88,7 @@ export class Rooms implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
 
   ngAfterViewInit(): void {
     this.headerComponent.title = 'Rooms view';
-    console.log(this.headerChildrenComponent.last.title = 'Last Title');
+    console.log((this.headerChildrenComponent.last.title = 'Last Title'));
   }
 
   ngAfterViewChecked(): void {}

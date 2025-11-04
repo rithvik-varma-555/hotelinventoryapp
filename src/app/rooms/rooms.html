@@ -26,7 +26,7 @@
 <!-- {{ roomsList | json }} -->
 <!-- new branch created -->
 <div>
-  <div *ngIf="rooms.availableRooms > 0">
+  <div *ngIf="hideRooms">
     <hinv-rooms-list
       [rooms]="roomsList"
       [title]="title"
